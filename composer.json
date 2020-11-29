@@ -1,0 +1,64 @@
+{
+  "name": "alginigor/yii2-rest-api-template",
+  "description": "Yii 2 REST API Project Template",
+  "minimum-stability": "stable",
+  "keywords": [
+    "yii2",
+    "framework",
+    "rest",
+    "basic",
+    "project template"
+  ],
+  "type": "project",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Альгин Игорь",
+      "email": "algin-ia@mail.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "yiisoft/yii2": "~2.0.14"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.1.0",
+    "yiisoft/yii2-gii": "~2.1.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "yii\\composer\\Installer::postInstall"
+    ],
+    "post-create-project-cmd": [
+      "yii\\composer\\Installer::postCreateProject",
+      "yii\\composer\\Installer::postInstall"
+    ]
+  },
+  "extra": {
+    "yii\\composer\\Installer::postCreateProject": {
+      "setPermission": [
+        {
+          "runtime": "0777",
+          "yii": "0755"
+        }
+      ]
+    },
+    "yii\\composer\\Installer::postInstall": {
+      "generateCookieValidationKey": [
+        "config/web.php"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}
